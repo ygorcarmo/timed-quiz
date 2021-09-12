@@ -90,10 +90,33 @@ main.wrong{
     border-color: black;
 }
 
+/* when pressed correct answer = button turns green */
 .btn.correct{
     --hue: var(--hue-correct);
+    color: black;
 }
 
+/* when pressed wrong answer = button turns red */
 .btn.wrong{
     --hue: var(--hue-wrong);
+}
+
+/* start and next buttons */
+
+.start-btn, .next-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+/* container/flex box of the next and start button */
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this hides content */
+.hide{
+    display: none;
 }
