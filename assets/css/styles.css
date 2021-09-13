@@ -65,7 +65,7 @@ main.wrong{
     padding: 10px;
 }
 #result-text{
-    position:absolute;
+    /* position:absolute; */
     top: 0;
     left:320px;
 }
@@ -76,7 +76,7 @@ main.wrong{
 /* Container setting (Question, Answer and Start Game) */
 
 .container{
-    position: relative;
+    /* position: relative; */
     width: 800px;
     max-width: 80%;
     background-color: white;

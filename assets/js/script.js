@@ -2,6 +2,7 @@
 var startButton = document.getElementById("start-btn");
 var nextButton = document.getElementById('next-btn');
 var answerButtonsElement = document.getElementById('answer-buttons');
+var sbtScore = document.getElementById('btn-sbt');
 // buttons end
 // containers/text start
 var questionContainerElement = document.getElementById('question-container');
@@ -12,6 +13,8 @@ var textGame = document.getElementById('gameText');
 var finish = document.getElementById('endGame');
 var theTitle = document.getElementById('result-text');
 var displaySCore = document.getElementById('score-count');
+var userInitials = document.getElementById('initials');
+var mainC = document.getElementById('main-container');
 // containers/text end
 
 var timer;
@@ -23,6 +26,8 @@ console.log(timerElement);
 
 // once button start click it will invoke the start function
 startButton.addEventListener('click', startGame);
+// submit score button
+sbtScore.addEventListener("click" ,setScore);
 
 // no need for next button for now! but keep the code in mind
 // nextButton.addEventListener('click', () =>{
@@ -71,8 +76,9 @@ function startTimer() {
         timerElement.textContent = timerCount + " second left"; 
     }
     // this will clear the interval once it gets to 0 and change text
-    if(timerCount === 0) {
+    if(timerCount <= 0) {
         // Clears interval
+        mainC.classList.add('hide');
         timerElement.textContent = "Time's UP!"; 
         clearInterval(timer);
         loseGame();
@@ -82,12 +88,15 @@ function startTimer() {
 }
 function loseGame(){
     resetState();
-    questionElement.classList.add('hide');
+    // answerButtonsElement.classList.add('hide');
+    // questionElement.classList.add('hide');
     finish.classList.remove('hide');
+    document.getElementById('endGame').setAttribute("styles", "padding:20px;")
 
     displaySCore.innerText = score + "/" + questions.length;
     // good score = well done
-    theTitle.innerText = "Time's Up!";
+    theTitle.innerText = "Time's UP!";
+    document.querySelector('#result-text').setAttribute("style", "position: unset;")
     
 }
 
@@ -154,6 +163,9 @@ function selectAnswer(e){
         if(correct){
             score++;
             console.log(score); 
+        }else{
+            timerCount-= 5;
+            console.log(score); 
         }
         
     // restart button will show up once question is answered and
@@ -162,26 +174,39 @@ function selectAnswer(e){
         // startButton.innerText = 'Restart'; 
         // startButton.classList.remove('hide');
 
-        // stops timer once all questions have been answered
-        clearInterval(timer);
         // if right answer selected adds one point to score
         if(correct){
             score++;
             console.log(score); 
+        }else{
+            timerCount-= 5;
+            console.log(score); 
         }
         // function when game ends will take one sec to happen
         setTimeout(function(){
+            mainC.classList.add('hide');
+            // stops timer once all questions have been answered
+            clearInterval(timer);
             // this will remove answers
-            resetState();
+            // resetState();
             // this will remove question
-            questionElement.classList.add('hide');
+            // questionElement.classList.add('hide');
+            
             // this will bring form of the end game up
             finish.classList.remove('hide');
             // this set the score text
             displaySCore.innerText = score + "/" + questions.length;
             // good score = well done
-            if(score === 2){
-                theTitle.innerText = 'Well Done!';
+            if(score > 1){
+                theTitle.innerText = 'Well Done!';                
+            }else if(timerCount <= 0){
+                theTitle.innerText = "Time's UP!";
+                document.querySelector('#result-text').setAttribute("style", "position: unset;")
+            }
+
+            else {
+                theTitle.innerText = 'Better Luck Next Time!';
+                document.querySelector('#result-text').setAttribute("style", "left: 210px;")
             }
         }, 1000);
     }
@@ -199,6 +224,16 @@ function setStatusClass(mainBack, correct){
         mainBack.classList.add('wrong');
         stop();     
     }
+}
+
+// this will save score locally
+
+function setScore(){
+    var scoreLocal = {
+        initials: userInitials.value.trim(),
+        score: score
+    };
+    localStorage.setItem("scoreLocal", JSON.stringify(scoreLocal));
 }
 
 // this resets the background to original color by removing the classes

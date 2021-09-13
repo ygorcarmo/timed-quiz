@@ -25,7 +25,7 @@
       </div>
 
       <div class="header-text">
-        <h1>Welcome to a Multiple-Choice Quiz!</h1>
+        <h1>Welcome to Ygor's Quiz!</h1>
       </div>
       <!-- CountDown timer -->
       <div class="timer">
@@ -38,7 +38,7 @@
 
     <main id='main'>
       <!-- Container with question, answer and buttons -->
-      <div class="container">
+      <div class="container" id="main-container">
         <div id="question-container" class="hide">
           <!-- Questions Display(start hidden) -->
           <div id="question">Question</div>
@@ -52,15 +52,15 @@
         </div>
         <!-- Start page text -->
         <section id="gameText" class="titleMain">
-          <p>Welcome to The Math Quiz!</p>
+          <p>On this Quiz there will be several maths questions, for each wrong question you will lose 5 seconds of the timer.</p>
         </section>
-        <!-- END Game text -->
+        <!-- END Game text
         <div id="endGame" class="hide">
           <h2 id="result-text" class="titleMain"></h2>
           <p>Your Final score is <span id="score-count">0</span></p>
-          <p>Enter your initials:</p><input type="text">
-          <button>Submit</button>
-        </div>
+          <p>Enter your initials:</p><input type="text" id="initials">
+          <button id="btn-sbt">Submit</button>
+        </div> -->
         
         <div class="controls">
             <!-- Start button  -->
@@ -69,6 +69,15 @@
           
         </div>
         
+      </div>
+      <div class="container hide" id="endGame">
+         <!-- END Game text -->
+         <div>
+          <h2 id="result-text" class="titleMain"></h2>
+          <p>Your Final score is <span id="score-count">0</span></p>
+          <p>Enter your initials:</p><input type="text" id="initials">
+          <button id="btn-sbt">Submit</button>
+        </div>
       </div>
     </main>
 
