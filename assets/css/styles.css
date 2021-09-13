@@ -55,12 +55,28 @@ main.correct{
 main.wrong{
     --hue: var(--hue-wrong);
 }
+/* Text About the game */
+.titleMain{
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+}
+#endGame{
+    padding: 10px;
+}
+#result-text{
+    position:absolute;
+    top: 0;
+    left:320px;
+}
+
 
 /* Main content END */
 
 /* Container setting (Question, Answer and Start Game) */
 
 .container{
+    position: relative;
     width: 800px;
     max-width: 80%;
     background-color: white;

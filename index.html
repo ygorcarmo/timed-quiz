@@ -21,7 +21,7 @@
     <header>
       <!-- link to scores page -->
       <div class="score">
-        <h3>View Highscore</h3>
+        <h3>View Highscores</h3>
       </div>
 
       <div class="header-text">
@@ -50,11 +50,22 @@
             <button class="btn">Answer 4</button>
           </div>
         </div>
-
+        <!-- Start page text -->
+        <section id="gameText" class="titleMain">
+          <p>Welcome to The Math Quiz!</p>
+        </section>
+        <!-- END Game text -->
+        <div id="endGame" class="hide">
+          <h2 id="result-text" class="titleMain"></h2>
+          <p>Your Final score is <span id="score-count">0</span></p>
+          <p>Enter your initials:</p><input type="text">
+          <button>Submit</button>
+        </div>
+        
         <div class="controls">
             <!-- Start button  -->
           <button id="start-btn" class="start-btn btn">Start</button>
-          <button id="next-btn" class="next-btn btn hide">Next</button>
+          <!-- <button id="next-btn" class="next-btn btn hide">Next</button> -->
           
         </div>
         

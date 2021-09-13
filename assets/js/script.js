@@ -8,11 +8,16 @@ var questionContainerElement = document.getElementById('question-container');
 var questionElement = document.getElementById('question');
 var mainBack = document.getElementById('main');
 var timerElement = document.getElementById("timer-count");
+var textGame = document.getElementById('gameText');
+var finish = document.getElementById('endGame');
+var theTitle = document.getElementById('result-text');
+var displaySCore = document.getElementById('score-count');
 // containers/text end
 
 var timer;
 var timerCount;
 var questionDelay;
+var score;
 
 console.log(timerElement);
 
@@ -30,6 +35,10 @@ var shuffledQuestions, currentQuestionIndex
 // start game function
 function startGame(){
     console.log("Started");
+    // hides about game text
+    textGame.classList.add('hide');
+    // this sets score to 0
+    score = 0;
     // this will set timer to 10 sec once game started
     timerCount = 10;
     // this will hide the start button game
@@ -53,15 +62,6 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount + " seconds left";
-    //   if (timerCount >= 0) {
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //     //   winGame();
-    //     }
-    //   }
-    //   // Tests if time has run out
     // this will set the text red once timer is running out
     if(timerCount < 4){
         timerElement.setAttribute('style', 'color:red;');
@@ -75,11 +75,21 @@ function startTimer() {
         // Clears interval
         timerElement.textContent = "Time's UP!"; 
         clearInterval(timer);
-        // loseGame();
+        loseGame();
         
     }
     }, 1000);
-  }
+}
+function loseGame(){
+    resetState();
+    questionElement.classList.add('hide');
+    finish.classList.remove('hide');
+
+    displaySCore.innerText = score + "/" + questions.length;
+    // good score = well done
+    theTitle.innerText = "Time's Up!";
+    
+}
 
 //  this sets the next question
 function setNextQuestion(){
@@ -97,7 +107,7 @@ function showQuestion(question){
         button.innerText = answer.text;
         button.classList.add('btn');
         if(answer.correct) {
-            button.dataset.correct = answer.correct;
+            button.dataset.correct = answer.correct;           
         }
 
         button.addEventListener('click', selectAnswer);
@@ -109,13 +119,21 @@ function showQuestion(question){
 // this reset questions/answers buttons
 function resetState(){
     clearStatusClass(mainBack);
-    nextButton.classList.add('hide');
+    // nextButton.classList.add('hide');
     while (answerButtonsElement.firstChild){
         answerButtonsElement.removeChild
         (answerButtonsElement.firstChild)
     }
 }
 
+// this will disable the buttons once answer selected
+function stop(){  
+    var elems = document.getElementsByClassName("btn");
+    for(var i = 0; i < elems.length; i++) {
+    elems[i].disabled = true;
+    }
+
+}
 
 // this will get a question/answer from array
 function selectAnswer(e){
@@ -129,15 +147,43 @@ function selectAnswer(e){
     // this will get next question(if available) once answer selected
     if(shuffledQuestions.length > currentQuestionIndex +1){
         
-        nextButton.classList.remove('hide');
-        currentQuestionIndex++;
+        // nextButton.classList.remove('hide');
+        currentQuestionIndex++;        
         setTimeout(setNextQuestion, 1000);
+        // if right answer selected adds one point to score
+        if(correct){
+            score++;
+            console.log(score); 
+        }
         
     // restart button will show up once question is answered and
     //  there's no more questions  left  
     } else {
-        startButton.innerText = 'Restart'; 
-        startButton.classList.remove('hide');
+        // startButton.innerText = 'Restart'; 
+        // startButton.classList.remove('hide');
+
+        // stops timer once all questions have been answered
+        clearInterval(timer);
+        // if right answer selected adds one point to score
+        if(correct){
+            score++;
+            console.log(score); 
+        }
+        // function when game ends will take one sec to happen
+        setTimeout(function(){
+            // this will remove answers
+            resetState();
+            // this will remove question
+            questionElement.classList.add('hide');
+            // this will bring form of the end game up
+            finish.classList.remove('hide');
+            // this set the score text
+            displaySCore.innerText = score + "/" + questions.length;
+            // good score = well done
+            if(score === 2){
+                theTitle.innerText = 'Well Done!';
+            }
+        }, 1000);
     }
 }
 
@@ -146,10 +192,12 @@ function setStatusClass(mainBack, correct){
     clearStatusClass(mainBack);
 //  if correct answer selected, background will turn green
     if (correct){
-        mainBack.classList.add('correct');            
+        mainBack.classList.add('correct');
+        stop();            
 //  if wrong awnswer selected, background will turn red 
     }else{
-        mainBack.classList.add('wrong');     
+        mainBack.classList.add('wrong');
+        stop();     
     }
 }
 
@@ -165,7 +213,9 @@ var questions = [
         question: 'What is 2 + 2 ?',
         answers: [
             {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: '22', correct: false},
+            {text: '2', correct: false},
+            {text: '6', correct: false}
         ]
     },
     {
