@@ -174,8 +174,8 @@ function selectAnswer(e){
         setTimeout(function(){
             mainC.classList.add('hide');
             // stops timer once all questions have been answered
-            clearInterval(timer);
-            
+            clearInterval(timer);            
+            resetState();
             // this will bring form of the end game up
             finish.classList.remove('hide');
             // this set the score text
@@ -192,7 +192,7 @@ function selectAnswer(e){
                 theTitle.innerText = 'Better Luck Next Time!';
                 document.querySelector('#result-text').setAttribute("style", "left: 210px;")
             }
-        }, 1000);
+        }, 300);
     }
 }
 
