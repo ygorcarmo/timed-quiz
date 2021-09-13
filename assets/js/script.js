@@ -29,12 +29,6 @@ startButton.addEventListener('click', startGame);
 // submit score button
 sbtScore.addEventListener("click" ,setScore);
 
-// no need for next button for now! but keep the code in mind
-// nextButton.addEventListener('click', () =>{
-//     currentQuestionIndex++;
-//     setNextQuestion();
-// })
-
 var shuffledQuestions, currentQuestionIndex
 
 // start game function
@@ -88,8 +82,6 @@ function startTimer() {
 }
 function loseGame(){
     resetState();
-    // answerButtonsElement.classList.add('hide');
-    // questionElement.classList.add('hide');
     finish.classList.remove('hide');
     document.getElementById('endGame').setAttribute("styles", "padding:20px;")
 
@@ -168,12 +160,8 @@ function selectAnswer(e){
             console.log(score); 
         }
         
-    // restart button will show up once question is answered and
-    //  there's no more questions  left  
+    // end game and show score submit form
     } else {
-        // startButton.innerText = 'Restart'; 
-        // startButton.classList.remove('hide');
-
         // if right answer selected adds one point to score
         if(correct){
             score++;
@@ -187,10 +175,6 @@ function selectAnswer(e){
             mainC.classList.add('hide');
             // stops timer once all questions have been answered
             clearInterval(timer);
-            // this will remove answers
-            // resetState();
-            // this will remove question
-            // questionElement.classList.add('hide');
             
             // this will bring form of the end game up
             finish.classList.remove('hide');
