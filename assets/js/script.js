@@ -9,15 +9,18 @@ var mainBack = document.getElementById('main');
 var timerElement = document.getElementById("timer-count");
 var timer;
 var timerCount;
+var questionDelay;
 
 console.log(timerElement);
 
 
 startButton.addEventListener('click', startGame);
-nextButton.addEventListener('click', () =>{
-    currentQuestionIndex++;
-    setNextQuestion();
-})
+
+// no need for next button for now!
+// nextButton.addEventListener('click', () =>{
+//     currentQuestionIndex++;
+//     setNextQuestion();
+// })
 
 var shuffledQuestions, currentQuestionIndex
 
@@ -111,6 +114,10 @@ function selectAnswer(e){
     if(shuffledQuestions.length > currentQuestionIndex +1){
         
         nextButton.classList.remove('hide');
+        currentQuestionIndex++;
+        setTimeout(setNextQuestion, 1000);
+        
+         
     } else {
         startButton.innerText = 'Restart'; 
         startButton.classList.remove('hide');
@@ -120,9 +127,9 @@ function selectAnswer(e){
 function setStatusClass(mainBack, correct){
     clearStatusClass(mainBack);
     if (correct){
-        mainBack.classList.add('correct');               
+        mainBack.classList.add('correct');             
     }else{
-        mainBack.classList.add('wrong');        
+        mainBack.classList.add('wrong');     
     }
 }
 
