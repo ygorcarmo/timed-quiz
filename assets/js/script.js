@@ -15,19 +15,21 @@ var theTitle = document.getElementById('result-text');
 var displaySCore = document.getElementById('score-count');
 var userInitials = document.getElementById('initials');
 var mainC = document.getElementById('main-container');
+var todoList = document.getElementById('#todo-list');
 // containers/text end
 
 var timer;
 var timerCount;
 var questionDelay;
-var score;
+var score = 1;
+
 
 console.log(timerElement);
 
 // once button start click it will invoke the start function
 startButton.addEventListener('click', startGame);
 // submit score button
-sbtScore.addEventListener("click" ,setScore);
+
 
 var shuffledQuestions, currentQuestionIndex
 
@@ -83,7 +85,12 @@ function startTimer() {
 function loseGame(){
     resetState();
     finish.classList.remove('hide');
-    document.getElementById('endGame').setAttribute("styles", "padding:20px;")
+    document.getElementById('endGame').setAttribute("styles", "padding:20px;");
+    
+    var elems = document.getElementsByClassName("btn");
+            for(var i = 0; i < elems.length; i++) {
+            elems[i].disabled = false;
+            }
 
     displaySCore.innerText = score + "/" + questions.length;
     // good score = well done
@@ -174,6 +181,10 @@ function selectAnswer(e){
         setTimeout(function(){
             mainC.classList.add('hide');
             // stops timer once all questions have been answered
+            var elems = document.getElementsByClassName("btn");
+            for(var i = 0; i < elems.length; i++) {
+            elems[i].disabled = false;
+            }
             clearInterval(timer);            
             resetState();
             // this will bring form of the end game up
@@ -211,13 +222,29 @@ function setStatusClass(mainBack, correct){
 }
 
 // this will save score locally
+sbtScore.addEventListener("click" ,setScore);
 
-function setScore(){
+// export var score;
+
+function setScore(event){
+    // event.preventDefault();
     var scoreLocal = {
         initials: userInitials.value.trim(),
         score: score
     };
-    localStorage.setItem("scoreLocal", JSON.stringify(scoreLocal));
+    var pontos = localStorage.getItem("pontos");
+
+    if (!pontos || pontos === null) {
+        pontos = [];
+      } else {
+        pontos = JSON.parse(pontos);
+      }
+
+      pontos.push(scoreLocal);
+
+      localStorage.setItem("pontos", JSON.stringify(pontos));
+    // todos.push(scoreLocal);
+    // localStorage.setItem("scoreLocal", JSON.stringify(todos));
 }
 
 // this resets the background to original color by removing the classes

@@ -15,16 +15,22 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- JS files -->
-    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/scores.js" defer></script>
   </head>
   <body>
     <header>
         <div class="header-text">
-          <h1>Welcome to Ygor's Quiz!</h1>
+          <h1 class="extra-padding">Welcome to Ygor's Quiz!</h1>
+          <button class="btn" onclick="location.href='./index.html'">Home Page</button>
+          <button id="done" class="btn">Clear Scores</button>
         </div>
       </header>
       <main id="main">
-
+        <div class="container min-h">
+          <h1 class="text-center">Scores</h1>
+          <ul id="todos-list"></ul>
+          
+        </div>
       </main>
   </body>
 </html>

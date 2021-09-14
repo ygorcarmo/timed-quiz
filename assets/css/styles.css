@@ -136,3 +136,20 @@ main.wrong{
 .hide{
     display: none;
 }
+
+/* Page Score Variables */
+
+.text-center{
+    text-align: center;
+}
+.extra-padding{
+    padding-bottom: 10px;
+}
+.min-h{
+    min-height: 600px;
+}
+#done{
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+}
