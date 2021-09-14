@@ -147,9 +147,31 @@ main.wrong{
 }
 .min-h{
     min-height: 600px;
+    /* width: 800px; */
+    /* max-width: 80%; */
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
 }
 #done{
     position: absolute;
     left: 20px;
     bottom: 18px;
+}
+.score-boxes{
+    width: 200px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    margin: 5px;
+}
+#score-container{
+    display: flex;
+    float:left;
+    padding: 10px;
+    align-items: center;
+}
+.score-title{
+    text-align: center;
 }
