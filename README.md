@@ -1,11 +1,6 @@
-# basic-page-template
+# Maths Quiz 
 
-Template for starting a standalone html page
+### Website Screenshot
 
-Comes with
-
-- HTML boilerplate `index.html` file with resources linked.
-- CSS `reset.css` and `styles.css` files.
-- JS `script.js` file.
-- Favicon set up with a default.
-- 3 free-to-use images.
+### Website URL
+https://ygorcarmo.github.io/timed-quiz/
