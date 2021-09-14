@@ -148,7 +148,7 @@ main.wrong{
 .min-h{
     min-height: 600px;
     /* width: 800px; */
-    /* max-width: 80%; */
+    max-width: 460px;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -171,6 +171,7 @@ main.wrong{
     float:left;
     padding: 10px;
     align-items: center;
+    flex-flow: wrap;
 }
 .score-title{
     text-align: center;
