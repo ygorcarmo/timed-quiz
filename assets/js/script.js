@@ -195,6 +195,7 @@ function selectAnswer(e){
             }else if(timerCount <= 0){
                 theTitle.innerText = "Time's UP!";
                 document.querySelector('#result-text').setAttribute("style", "position: unset;")
+                timerElement.textContent = "Time's UP!";
             }
 
             else {
