@@ -21,10 +21,8 @@ var todoList = document.getElementById('#todo-list');
 var timer;
 var timerCount;
 var questionDelay;
-var score = 1;
 
 
-console.log(timerElement);
 
 // once button start click it will invoke the start function
 startButton.addEventListener('click', startGame);
