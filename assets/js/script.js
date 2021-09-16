@@ -39,7 +39,7 @@ function startGame(){
     // this sets score to 0
     score = 0;
     // this will set timer to 10 sec once game started
-    timerCount = 10;
+    timerCount = 25;
     // this will hide the start button game
     startButton.classList.add('hide');
     // this will display timer once game started
@@ -269,6 +269,33 @@ var questions = [
             {text: '42', correct: false},
             {text: '8', correct: true},
             {text: '20', correct: false}
+        ]
+    },
+    {
+        question: 'What is 10 * 2 ?',
+        answers: [
+            {text: '222', correct: false},
+            {text: '102', correct: false},
+            {text: '12', correct: false},
+            {text: '20', correct: true}
+        ]
+    },
+    {
+        question: 'What is 10 / 2 ?',
+        answers: [
+            {text: '5', correct: true},
+            {text: '1', correct: false},
+            {text: '20', correct: false},
+            {text: '50', correct: false}
+        ]
+    },
+    {
+        question: 'What is 55 - 10 ?',
+        answers: [
+            {text: '65', correct: false},
+            {text: '45', correct: true},
+            {text: '60', correct: false},
+            {text: '50', correct: false}
         ]
     }
 ];
