@@ -176,7 +176,55 @@ main.wrong{
 .score-title{
     text-align: center;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 425px) {
+    .header-text{
+        display: none;
+    }
+    .score-boxes{
+        width: 150px;
+    }
+    .extra-padding{
+        display: none;
+    }
+    #home-btn{
+        position: absolute;
+        right: 20px;
+        bottom: 5px;
+    }
+    #done{
+        left: 20px;
+        bottom: 5px;
+    }
+    #score-container{
+        padding-left: 45px;
+    }
+    
+}
+@media only screen and (max-width: 375px) {
+    .header-text{
+        display: none;
+    }
+    .score-boxes{
+        width: 120px;
+    }
+    .extra-padding{
+        display: none;
+    }
+    #home-btn{
+        position: absolute;
+        right: 20px;
+        bottom: 5px;
+    }
+    #done{
+        left: 20px;
+        bottom: 5px;
+    }
+    #score-container{
+        padding-left: 45px;
+    }
+    
+}
+@media only screen and (max-width: 320px) {
     .header-text{
         display: none;
     }
