@@ -176,3 +176,26 @@ main.wrong{
 .score-title{
     text-align: center;
 }
+@media only screen and (max-width: 600px) {
+    .header-text{
+        display: none;
+    }
+    .score-boxes{
+        width: 100px;
+    }
+    .extra-padding{
+        display: none;
+    }
+    #home-btn{
+        position: absolute;
+        right: 20px;
+        bottom: 5px;
+    }
+    #done{
+        left: 20px;
+        bottom: 5px;
+    }
+    #score-container{
+        padding-left: 45px;
+    }
+  }
