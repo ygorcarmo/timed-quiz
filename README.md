@@ -8,3 +8,8 @@ This is a maths quiz, for each wrong question there will be a time penalty and t
 
 ### Website URL
 https://ygorcarmo.github.io/timed-quiz/
+
+
+### License & copyright
+
+[MIT License](LICENSE).
