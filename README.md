@@ -2,11 +2,11 @@
 
 This is a maths quiz, for each wrong question there will be a time penalty and the website's background will turn red. When the correct answer is selected, the background will turn green and the score will increase. Once all questions are answered or time is over, you will added your initials/name and redirected to the scores page.
 
-# Technologies Used
+### Technologies Used
 
-HTML
-CSS
-Javascript
+ - HTML
+ - CSS
+ - Javascript
 
 ### Website Screenshot
 
